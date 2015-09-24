@@ -1,3 +1,21 @@
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '157113227965936',
+      xfbml      : true,
+      version    : 'v2.4'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 <div class="button-container">
   <button class="button" onClick="counter()">Click Here</button>
   <div class="counter-container">Clicks: <span id="counter">0</span></div><br />
@@ -16,7 +34,7 @@
   }
 
   function fbShare() {
-    window.open('https://www.facebook.com/sharer/sharer.php?s=100&amp;p[title]=Clicks&amp;p[summary]=I%20got%20'+clicks+'%20clicks%20in%20Clickmore&amp;p[url]=https%3A%2F%2Fgentle-shore-4420.herokuapp.com%2F','sharer','toolbar=0,status=0,width=548,height=325');return false;
+    window.open('https://www.facebook.com/dialog/feed?app_id=157113227965936&amp;display=popup&amp;caption=I%20got%20'+clicks+'%20clicks%20in%20Clickmore&amp;link=https%3A%2F%2Fgentle-shore-4420.herokuapp.com%2F&amp;redirect_uri=http://designation.us');return false;
   }
 
   function twShare() {
