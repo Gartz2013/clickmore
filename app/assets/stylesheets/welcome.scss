@@ -1,0 +1,53 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body {
+  height: 100vh;
+  position: relative;
+  width: 100vw;
+}
+
+.button-container {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.button {
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: none;
+  color: #fff;
+  display: inline-block;
+  float: left;
+  height: 75px;
+  -webkit-transition: background-color 0.3s ease-in;
+  transition: background-color 0.3s ease-in;
+  width: 150px;
+  &:hover, &:focus {
+    background-color: black;
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: background-color 0.3s ease-in;
+    transition: background-color 0.3s ease-in;
+  }
+  /*&:active {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+  }*/
+}
+
+.counter-container {
+  display: inline-block;
+  float: left;
+  font-size: 24px;
+  line-height: 75px;
+  margin-left: 10px;
+}
