@@ -1,20 +1,11 @@
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '157113227965936',
-      xfbml      : true,
-      version    : 'v2.4'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=157113227965936";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 <div class="button-container">
   <button class="button" onClick="counter()">Click Here</button>
@@ -31,10 +22,27 @@
   function counter() {
     clicks += 1;
     document.getElementById("counter").innerHTML = clicks;
+    document.getElementById("og-description").setAttribute('content', 'I have '+clicks+' clicks in Clickmore!');
   }
 
+  var iframe = $('iframe').contents().find("#u_0_1");
+  console.log(iframe);
+
   function fbShare() {
-    window.open('https://www.facebook.com/dialog/feed?app_id=157113227965936&amp;display=popup&amp;caption=I%20got%20'+clicks+'%20clicks%20in%20Clickmore&amp;link=https%3A%2F%2Fgentle-shore-4420.herokuapp.com%2F&amp;redirect_uri=http://designation.us');return false;
+    FB.ui(
+      {
+        method: 'share',
+        href: 'https://gentle-shore-4420.herokuapp.com/',
+      },
+      // callback
+      function(response) {
+        if (response && !response.error_message) {
+          alert('Posting completed.');
+        } else {
+          alert('Error while posting.');
+        }
+      }
+    );
   }
 
   function twShare() {
