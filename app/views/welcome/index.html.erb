@@ -1,6 +1,11 @@
 <div class="button-container">
   <button class="button" onClick="counter()">Click Here</button>
-  <div class="counter-container">Clicks: <span id="counter">0</span></div>
+  <div class="counter-container">Clicks: <span id="counter">0</span></div><br />
+  <ul class="share-list">
+    <li class="share-list--item">Share: </li>
+    <li class="share-list--item"><a href="#" class="share-list--item--link facebook" title="Share this post on Facebook" onClick="fbShare()"></a></li>
+    <li class="share-list--item"><a href="#" class="share-list--item--link twitter" title="Share this post on Twitter" onClick="twShare()"></a></li>
+  </ul>
 </div>
 
 <script>
@@ -9,4 +14,21 @@
     clicks += 1;
     document.getElementById("counter").innerHTML = clicks;
   }
+
+  function fbShare() {
+    window.open('https://www.facebook.com/sharer/sharer.php?s=100&amp;p[title]=Clicks&amp;p[summary]=I%20got%20'+clicks+'%20clicks%20in%20Clickmore&amp;p[url]=https%3A%2F%2Fgentle-shore-4420.herokuapp.com%2F','sharer','toolbar=0,status=0,width=548,height=325');return false;
+  }
+
+  function twShare() {
+    window.open('https://twitter.com/intent/tweet?url=https%3A%2F%2Fgentle-shore-4420.herokuapp.com%2F&amp;text=I%20got%20'+clicks+'%20clicks%20in%20Clickmore&amp;hashtags=clickmore', 'sharer', 'toolbar=0,status=0,width=550,height=420');return false;
+  }
 </script>
+
+<style>
+  .share-list--item--link.facebook {
+    background-image: url(<%= image_path('facebook-share.png') %>);
+  }
+  .share-list--item--link.twitter {
+    background-image: url(<%= image_path('twitter-share.png') %>);
+  }
+</style>
