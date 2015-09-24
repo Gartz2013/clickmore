@@ -18,15 +18,25 @@
 </div>
 
 <script>
+  jQuery(document).ready( function($) {
+    var randx = 0;
+    var randy = 0;
+    $('.button').mouseenter( function() {
+      randx = Math.random() * ( Math.random() * 150 );
+      randy = Math.random() * ( Math.random() * 150 );
+      document.getElementById('transform').innerHTML = '.button:active{-webkit-transform:translate('+randx+'%,'+randy+'%);transform:translate('+randx+'%,'+randy+'%)';
+    });
+    $(' .button:active ').css( "transform", "translate("+randx+"%, "+randy+"%)" );
+  });
   var clicks = 0;
   function counter() {
     clicks += 1;
     document.getElementById("counter").innerHTML = clicks;
     document.getElementById("og-description").setAttribute('content', 'I have '+clicks+' clicks in Clickmore!');
+    randx = Math.random() * ( Math.random() * 150 );
+    randy = Math.random() * ( Math.random() * 150 );
+    document.getElementById('transform').innerHTML = '.button:active{-webkit-transform:translate('+randx+'%,'+randy+'%);transform:translate('+randx+'%,'+randy+'%)';
   }
-
-  var iframe = $('iframe').contents().find("#u_0_1");
-  console.log(iframe);
 
   function fbShare() {
     FB.ui(
@@ -58,3 +68,4 @@
     background-image: url(<%= image_path('twitter-share.png') %>);
   }
 </style>
+<style id="transform"></style>
